@@ -1,4 +1,3 @@
-![ReelFetch Screenshot](https://drive.google.com/uc?export=view&id=1VDWYGS3YS8WnRstvNoWinFaYgi_-UL5y)
 # ReelFetch backend setup (Windows, MySQL + Node.js)
 
 ## 1) Prerequisites
@@ -69,3 +68,5 @@ tracking period*:
   simultaneous first-time countries can only produce a single reset.
 - The hero section's **"avg. fetch time" stat is completely independent** of
   this feature: it is untouched, has its own source, and is never reset.
+## Structure
+![ReelFetch Screenshot](https://drive.google.com/uc?export=view&id=1VDWYGS3YS8WnRstvNoWinFaYgi_-UL5y)
