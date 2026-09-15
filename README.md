@@ -1,4 +1,4 @@
-![ReelFetch Screenshot](images/screenshot.png)
+[👁️ View Project](https://drive.google.com/file/d/1VDWYGS3YS8WnRstvNoWinFaYgi_-UL5y/view)
 # ReelFetch backend setup (Windows, MySQL + Node.js)
 
 ## 1) Prerequisites
