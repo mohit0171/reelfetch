@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>ReelFetch — Download Reels in HD</title>
+<meta name="description" content="Download Instagram Reels, Facebook Reels, YouTube Shorts & TikTok videos in HD. Fast, free, no watermark." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css" />
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
+</head>
+<body>
+<div class="bg-orbs"><span class="orb orb-1"></span><span class="orb orb-2"></span><span class="orb orb-3"></span></div>
+<div class="bg-grid"></div>
+
+<header class="nav">
+  <div class="nav-inner">
+    <a class="logo" href="#"><span class="logo-mark">⚡</span><span class="logo-text">Reel<em>Fetch</em></span></a>
+    <nav class="nav-links">
+      <a href="#downloader" class="active">Downloader</a>
+      <a href="#features">Features</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <span class="live-dot"><i></i> 2,431 online</span>
+      <a href="#downloader" class="btn btn-small btn-primary">Try it free</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#downloader">Downloader</a><a href="#features">Features</a>
+    <a href="#how">How it works</a><a href="#faq">FAQ</a>
+  </div>
+</header>
+
+<main>
+<section class="hero" id="downloader">
+  <div class="hero-inner">
+    <div class="badge"><span class="badge-pulse"></span> v1.0 &nbsp;•&nbsp; No watermark &nbsp;•&nbsp; 4K coming soon</div>
+    <h1>Download any <span class="grad">Reel</span> in seconds<span class="cursor">_</span></h1>
+    <p class="sub">Paste a link from Instagram, Facebook, YouTube Shorts or TikTok.<br class="br">We fetch it in HD — free, no login, no watermark.</p>
+
+    <div class="platform-tabs" id="platformTabs">
+      <button class="ptab active" data-p="instagram"><span class="pdot ig"></span> Instagram</button>
+      <button class="ptab" data-p="facebook"><span class="pdot fb"></span> Facebook</button>
+      <button class="ptab" data-p="youtube"><span class="pdot yt"></span> Shorts</button>
+      <button class="ptab" data-p="tiktok"><span class="pdot tt"></span> TikTok</button>
+    </div>
+
+    <div class="dl-card glass">
+      <div class="dl-row">
+        <div class="input-wrap">
+          <span class="link-icon">🔗</span>
+          <input id="urlInput" type="url" inputmode="url" autocomplete="off" spellcheck="false" placeholder="Paste reel link here…  e.g. instagram.com/reel/…" />
+          <button class="paste-btn" id="pasteBtn" title="Paste from clipboard">📋 Paste</button>
+          <button class="clear-btn hidden" id="clearBtn" title="Clear">✕</button>
+        </div>
+        <button class="btn btn-primary btn-fetch" id="fetchBtn"><span class="fetch-label">Fetch Reel</span><span class="fetch-arrow">→</span></button>
+      </div>
+      <div class="dl-meta">
+        <span id="linkStatus" class="link-status idle">Awaiting link…</span>
+        <span class="secure">🔒 100% private — links never stored</span>
+      </div>
+      <!-- SMALL LOADING AREA (appears after pasting / fetching) -->
+      <div class="loader-box hidden" id="loaderBox" aria-live="polite">
+        <div class="loader-top">
+          <div class="spinner"><span></span><span></span><span></span><span></span></div>
+          <div class="loader-text">
+            <strong id="loaderTitle">Fetching your reel…</strong>
+            <small id="loaderStep">Validating link</small>
+          </div>
+          <div class="loader-pct" id="loaderPct">0%</div>
+        </div>
+        <div class="progress"><div class="progress-fill" id="progressFill"></div><div class="progress-shine"></div></div>
+        <ul class="steps" id="stepsList">
+          <li data-step="0" class="on"><i>1</i> Validate link</li>
+          <li data-step="1"><i>2</i> Connect source</li>
+          <li data-step="2"><i>3</i> Fetch media</li>
+          <li data-step="3"><i>4</i> Prepare preview</li>
+        </ul>
+      </div>
+
+      <!-- RESULT PREVIEW (demo, no backend) -->
+      <div class="result hidden" id="resultBox">
+        <div class="result-thumb">
+          <div class="thumb-art"><span class="thumb-play">▶</span><span class="thumb-dur" id="resDur">0:27 • HD</span></div>
+          <span class="thumb-src" id="resSrc">instagram</span>
+        </div>
+        <div class="result-info">
+          <strong id="resTitle">reel_C8x92kLmN.mp4</strong>
+          <small id="resMeta">MP4 • 1080×1920 • ~8.4 MB • No watermark</small>
+          <div class="quality-row" id="qualityRow">
+            <button class="qbtn active" data-q="HD 1080p">HD 1080p</button>
+            <button class="qbtn" data-q="SD 720p">SD 720p</button>
+            <button class="qbtn" data-q="Audio MP3">Audio MP3</button>
+          </div>
+          <div class="result-actions">
+            <button class="btn btn-primary btn-dl" id="downloadBtn">⬇ Download <span id="dlQ">HD 1080p</span></button>
+            <button class="btn btn-ghost" id="resetBtn">New link</button>
+          </div>
+          <div class="dl-progress hidden" id="dlProgress"><div id="dlFill"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ============ LIVE STATS ============ -->
+<section class="section" id="live-stats">
+  <div class="wrap">
+    <p class="kicker"><span class="live-pill"><i></i>LIVE</span>&nbsp; country-based tracking period</p>
+    <h2>Live <span class="grad">stats</span></h2>
+    <div class="stats">
+      <div class="stat"><strong id="statDownloads">—</strong><span>Downloads</span></div>
+      <div class="stat"><strong id="statFetches">—</strong><span>Fetches</span></div>
+      <div class="stat"><strong id="statUsers">—</strong><span>Users</span></div>
+      <div class="stat"><strong>&lt; 3s</strong><span>avg. fetch time</span></div>
+    </div>
+    <p class="stats-note" id="statsNote">Connecting to backend…</p>
+  </div>
+</section>
+<!-- ============ FEATURES ============ -->
+<section class="section" id="features">
+  <div class="wrap">
+    <p class="kicker">Why ReelFetch</p>
+    <h2>Built for speed. Designed for <span class="grad">delight.</span></h2>
+    <div class="grid-3">
+      <div class="card glass"><div class="ic">🎬</div><h3>True HD Quality</h3><p>Original 1080p / 4K source files with zero compression and zero watermark.</p></div>
+      <div class="card glass"><div class="ic">⚡</div><h3>Fetch in ~3 seconds</h3><p>Edge-cached fetch pipeline with instant link detection as you paste.</p></div>
+      <div class="card glass"><div class="ic">🔒</div><h3>Private by design</h3><p>No accounts, no tracking, no stored links. Everything happens in your browser.</p></div>
+      <div class="card glass"><div class="ic">🌍</div><h3>4 platforms, 1 box</h3><p>Instagram, Facebook, YouTube Shorts & TikTok — auto-detected from the URL.</p></div>
+      <div class="card glass"><div class="ic">🎧</div><h3>MP3 extraction</h3><p>Grab just the audio in one tap — perfect for trending sounds.</p></div>
+      <div class="card glass"><div class="ic">📱</div><h3>Mobile-first</h3><p>Feels like a native app. Add to home screen and fetch on the go.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ HOW IT WORKS ============ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <p class="kicker">3 simple steps</p>
+    <h2>From link to <span class="grad">download</span></h2>
+    <div class="how-grid">
+      <div class="how glass"><span class="how-n">1</span><h3>Copy the reel link</h3><p>Tap <b>Share → Copy link</b> on any reel, short or TikTok video.</p></div>
+      <div class="how glass"><span class="how-n">2</span><h3>Paste it above</h3><p>Our loader validates the link and fetches the HD source instantly.</p></div>
+      <div class="how glass"><span class="how-n">3</span><h3>Hit download</h3><p>Pick HD, SD or MP3 — the file lands straight in your gallery.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FAQ ============ -->
+<section class="section" id="faq">
+  <div class="wrap narrow">
+    <p class="kicker">FAQ</p>
+    <h2>Questions? <span class="grad">Answered.</span></h2>
+    <div class="faq" id="faqList">
+      <div class="faq-item glass"><button class="faq-q">Is it really free?<span>+</span></button><div class="faq-a"><p>Yes — unlimited fetches, forever free. No login and no watermark on any download.</p></div></div>
+      <div class="faq-item glass"><button class="faq-q">Do I need to install anything?<span>+</span></button><div class="faq-a"><p>No. ReelFetch runs fully in your browser on phone, tablet or desktop.</p></div></div>
+      <div class="faq-item glass"><button class="faq-q">Which platforms are supported?<span>+</span></button><div class="faq-a"><p>Instagram Reels, Facebook Reels, YouTube Shorts and TikTok videos.</p></div></div>
+      <div class="faq-item glass"><button class="faq-q">Is my link stored anywhere?<span>+</span></button><div class="faq-a"><p>No. Links are processed in-memory only and never saved or tracked.</p></div></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap foot-in">
+    <a class="logo" href="#"><span class="logo-mark">⚡</span><span class="logo-text">Reel<em>Fetch</em></span></a>
+    <p>Made for creators, by creators.</p>
+    <small>© 2026 ReelFetch • <a href="#">Privacy</a> • <a href="#">Terms</a> • <a href="#">Contact</a></small>
+  </div>
+</footer>
+
+<div class="toast hidden" id="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
+
+
